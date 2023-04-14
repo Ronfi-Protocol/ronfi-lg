@@ -1,0 +1,24 @@
+image: node:14.18.1
+definitions:
+  caches:
+    npm: ~/.npm
+pipelines:
+  default:
+    - step:
+        name: Validate code
+        caches:
+          - npm
+        script:
+          - npm install
+  branches:
+    master:
+      - step:
+          script:
+            - ssh-keyscan -H $SSH_SERVER_IP >> ~/.ssh/known_hosts
+            - apt-get update
+            - apt-get install zip
+            - git checkout master
+            - yarn && yarn build:prod
+            - zip -r landing.zip build
+            - scp -P 24 landing.zip $SSH_SERVER_USER@$SSH_SERVER_IP:~/ronfi
+            - ssh $SSH_SERVER_USER@$SSH_SERVER_IP -p 24 'cd ~/ronfi && source deploy.sh'
