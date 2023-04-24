@@ -24,6 +24,10 @@ const FAQ = () => {
             }
           />
           <FAQItem
+            title="Is Ronfi released now?"
+            content="No, Ronfi is still in the research and development phase. Please follow our community to get the newest announcement."
+          />
+          <FAQItem
             title="How does RonFI Works?"
             content={
               <ul>
