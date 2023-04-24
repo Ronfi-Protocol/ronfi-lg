@@ -2,11 +2,11 @@ import { createGlobalStyle } from 'styled-components/macro'
 
 const ThemedGlobalStyle = createGlobalStyle`
   html {
-    font-family: 'JetBrains Mono', sans-serif;
+    font-family: 'Space Mono', sans-serif;
     font-size: 16px;
     line-height: 24px;
-    color: ${({ theme }) => theme.colors.neutral1};
-    background-color: ${({ theme }) => theme.colors.neutral8} !important;
+    color: ${({ theme }) => theme.colors.neutral8};
+    background-color: ${({ theme }) => theme.colors.neutral1} !important;
     font-variant: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

@@ -17,9 +17,9 @@ const NumberInputField = ({
   InputProps) => {
   return (
     <Box width={block ? '100%' : 'auto'} sx={sx}>
-      <Type.Hairline2 color={props.hasError ? 'red1' : 'neutral4'} mb="12px">
+      <Type.Caption color={props.hasError ? 'red1' : 'neutral4'} mb="12px">
         {label}
-      </Type.Hairline2>
+      </Type.Caption>
       <NumberInput {...props} block={block} />
     </Box>
   )

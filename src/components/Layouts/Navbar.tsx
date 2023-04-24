@@ -1,16 +1,12 @@
-import { useResponsive } from 'ahooks'
 import { ArrowUp2 } from 'iconsax-react'
 import React, { RefObject, useEffect, useRef, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
 
 import Container from 'components/Layouts/Container'
 import useLocationHash from 'hooks/helpers/useLocationHash'
 import IconButton from 'theme/Button/IconButton'
 import { Box, Flex, Image, Type } from 'theme/base'
-import { MEDIA_WIDTHS } from 'theme/theme'
-
-import MobileMenu from './MobileMenu'
 
 type NavHeader = {
   headerTitle: string
@@ -27,16 +23,21 @@ const NavbarWrapper = styled(Box)<{ scrolled?: boolean }>`
   ${({ scrolled, theme }) =>
     !!scrolled &&
     `
-  background: ${theme.colors.neutral8};`}
+  background: ${theme.colors.neutral1};`}
 `
 
-const NavItem = styled(Type.Caption1)<{ isActive: boolean }>`
-  padding: 4px 16px;
-  color: ${({ isActive, theme }) => (isActive ? theme.colors.primary1 : theme.colors.neutral1)};
-  @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
-    margin-bottom: 16px;
-    font-size: 24px;
-    line-height: 32px;
+const NavItem = styled(Type.Normal)`
+  position: relative;
+  padding: 12px 26px;
+  background: ${({ theme }) => theme.colors.neutral2};
+  &:after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 12px);
+    right: 0;
+    width: 2px;
+    height: 24px;
+    background: ${({ theme }) => theme.colors.primary1};
   }
 `
 
@@ -72,48 +73,12 @@ const scrollToHash = (hash: string) => {
   el?.scrollIntoView()
 }
 
-const CollapseItems = ({ navHeader, activeIndex }: { navHeader?: NavHeader; activeIndex: number }) => (
-  <Flex
-    justifyContent={['center', 'center', 'center', 'end']}
-    alignItems="center"
-    flex="auto"
-    flexDirection={['column', 'column', 'column', 'row']}
-  >
-    {navHeader ? (
-      <>
-        {navHeader.map((item, index) => (
-          <NavLink key={item.headerID} to={`#${item.headerID}`}>
-            <NavItem isActive={index === activeIndex} onClick={() => scrollToHash(item.headerID)}>
-              {item.headerTitle}
-            </NavItem>
-          </NavLink>
-        ))}
-        <Box
-          height={[1, 1, 1, 24]}
-          width={[24, 24, 24, 1]}
-          flex="0 0 1px"
-          bg="neutral5"
-          mx={[0, 0, 0, 12]}
-          mb={[16, 16, 16, 0]}
-        ></Box>
-      </>
-    ) : (
-      <NavLink to="/">{({ isActive }) => <NavItem isActive={isActive}>Home</NavItem>}</NavLink>
-    )}
-    {/* <NavLink to="/customers">{({ isActive }) => <NavItem isActive={isActive}>Customers</NavItem>}</NavLink>
-    <NavLink to="/quick-audit">{({ isActive }) => <NavItem isActive={isActive}>Quick Audit</NavItem>}</NavLink> */}
-    <a href="https://decentralab.asia" target="_blank" rel="noreferrer">
-      <NavItem isActive={false}>Company</NavItem>
-    </a>
-  </Flex>
-)
-
 const Navbar = ({ navHeader }: { navHeader?: NavHeader }) => {
   const [scrolled, setScrolled] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeIndex, setActiveIndex] = useState(0)
   const indexRef = useRef(0)
   const { hash } = useLocationHash()
-  const { lg } = useResponsive()
   useEffect(() => {
     const handleWindowScroll = () => {
       if (window.scrollY > 48 - 12) {
@@ -142,14 +107,14 @@ const Navbar = ({ navHeader }: { navHeader?: NavHeader }) => {
     <>
       <NavbarWrapper py={scrolled ? 12 : [16, 16, 32]} scrolled={scrolled}>
         <Container>
-          <Flex alignItems="center" width="100%">
-            <Link to="/">LOGO</Link>
-            {lg && <CollapseItems navHeader={navHeader} activeIndex={activeIndex} />}
-            {!lg && (
-              <MobileMenu activeIndex={activeIndex}>
-                <CollapseItems navHeader={navHeader} activeIndex={activeIndex} />
-              </MobileMenu>
-            )}
+          <Flex alignItems="center" width="100%" justifyContent="space-between">
+            <Link to="/">
+              <Image src="/images/ronfi-logo.png" sx={{ height: [32, 50] }} />
+            </Link>
+            <Box>
+              <NavItem mr={16}>Document</NavItem>
+              {/* <NavItem>Help</NavItem> */}
+            </Box>
           </Flex>
         </Container>
       </NavbarWrapper>

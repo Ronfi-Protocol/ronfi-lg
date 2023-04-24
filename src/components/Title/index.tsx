@@ -1,16 +1,14 @@
-import { ArrowRight2 } from 'iconsax-react'
 import React, { ReactNode } from 'react'
 
-import { Flex, Type } from 'theme/base'
+import { Box, Type } from 'theme/base'
 
 const Title = ({ children }: { children: ReactNode }) => {
   return (
-    <Flex alignItems="center" color="primary1" mb={32}>
-      <ArrowRight2 variant="Bold" size={40} />
-      <Type.H1 color="neutral1" ml={16}>
+    <Box sx={{ borderBottom: '1px solid', borderColor: 'neutral8' }} width="100%">
+      <Type.H4 width="fit-content" px={16} py="4px" bg="neutral8" color="neutral1">
         {children}
-      </Type.H1>
-    </Flex>
+      </Type.H4>
+    </Box>
   )
 }
 

@@ -21,9 +21,9 @@ const InputField = forwardRef(
     ref: ForwardedRef<HTMLInputElement>
   ) => (
     <Box width={block ? '100%' : 'auto'} sx={sx}>
-      <Type.Hairline2 color={hasError ? 'red1' : 'neutral4'} mb="12px">
+      <Type.Caption color={hasError ? 'red1' : 'neutral4'} mb="12px">
         {label}
-      </Type.Hairline2>
+      </Type.Caption>
       <Input {...props} sx={sxInput} block={block} ref={ref} variant={hasError ? 'error' : ''} />
     </Box>
   )
@@ -35,9 +35,9 @@ export const InputPasswordField = forwardRef(
     ref: ForwardedRef<HTMLInputElement>
   ) => (
     <Box width={block ? '100%' : 'auto'} sx={sx}>
-      <Type.Hairline2 color={hasError ? 'red1' : 'neutral4'} mb="12px">
+      <Type.Caption color={hasError ? 'red1' : 'neutral4'} mb="12px">
         {label}
-      </Type.Hairline2>
+      </Type.Caption>
       <InputPassword {...props} block={block} ref={ref} variant={hasError ? 'error' : ''} />
     </Box>
   )
@@ -49,9 +49,9 @@ export const TextareaField = forwardRef(
     ref: ForwardedRef<HTMLTextAreaElement>
   ) => (
     <Box width={block ? '100%' : 'auto'} sx={sx}>
-      <Type.Hairline2 color={hasError ? 'red1' : 'neutral4'} mb="12px">
+      <Type.Caption color={hasError ? 'red1' : 'neutral4'} mb="12px">
         {label}
-      </Type.Hairline2>
+      </Type.Caption>
       <Textarea {...props} block={block} ref={ref} variant={hasError ? 'error' : ''} />
     </Box>
   )

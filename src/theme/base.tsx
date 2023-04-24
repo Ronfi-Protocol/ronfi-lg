@@ -51,14 +51,18 @@ export const Link = forwardRef((props, ref: ForwardedRef<HTMLAnchorElement>) => 
 export const Type = {
   Hero({ children, ...props }: TextProps) {
     return (
-      <TextWrapper fontSize="96px" lineHeight="96px" {...props}>
-        <h1>{children}</h1>
+      <TextWrapper
+        fontSize={['48px', '48px', '64px', '64px', '96px']}
+        lineHeight={['54px', '54px', '72px', '72px', '110px']}
+        {...props}
+      >
+        <h1 style={{ fontWeight: 'normal' }}>{children}</h1>
       </TextWrapper>
     )
   },
   H1({ children, ...props }: TextProps) {
     return (
-      <TextWrapper fontSize={['40px', '48px', '64px']} lineHeight={['40px', '48px', '64px']} {...props}>
+      <TextWrapper fontSize={['40px', '48px', '64px']} lineHeight={['45px', '54px', '72px']} {...props}>
         <h1>{children}</h1>
       </TextWrapper>
     )
@@ -86,37 +90,54 @@ export const Type = {
   },
   H5({ children, ...props }: TextProps) {
     return (
-      <TextWrapper fontSize="24px" lineHeight="32px" {...props}>
+      <TextWrapper fontSize="20px" lineHeight="28px" {...props}>
         <h5>{children}</h5>
       </TextWrapper>
     )
   },
-  Caption(props: TextProps) {
-    return <TextWrapper fontSize="14px" lineHeight="20px" display="inline-block" {...props} />
+  Large(props: TextProps & { b?: boolean }) {
+    return (
+      <TextWrapper
+        fontSize="24px"
+        lineHeight="32px"
+        display="inline-block"
+        fontWeight={props.b ? 'bold' : 'normal'}
+        {...props}
+      />
+    )
   },
-  Small(props: TextProps) {
-    return <TextWrapper fontSize="12px" lineHeight="20px" display="inline-block" {...props} />
+  Normal(props: TextProps & { b?: boolean }) {
+    return (
+      <TextWrapper
+        fontSize="16px"
+        lineHeight="24px"
+        display="inline-block"
+        fontWeight={props.b ? 'bold' : 'normal'}
+        {...props}
+      />
+    )
   },
-  Body1(props: TextProps) {
-    return <TextWrapper fontSize="20px" lineHeight="32px" display="inline-block" {...props} />
+  Small(props: TextProps & { b?: boolean }) {
+    return (
+      <TextWrapper
+        fontSize="14px"
+        lineHeight="24px"
+        display="inline-block"
+        fontWeight={props.b ? 'bold' : 'normal'}
+        {...props}
+      />
+    )
   },
-  Body2(props: TextProps) {
-    return <TextWrapper fontSize="16px" lineHeight="24px" display="inline-block" {...props} />
-  },
-  Caption1(props: TextProps) {
-    return <TextWrapper fontSize="14px" lineHeight="24px" display="inline-block" {...props} />
-  },
-  Caption2(props: TextProps) {
-    return <TextWrapper fontSize="12px" lineHeight="20px" display="inline-block" {...props} />
-  },
-  Hairline1(props: TextProps) {
-    return <TextWrapper fontSize="16px" lineHeight="16px" fontWeight="bold" {...props} />
-  },
-  Hairline2(props: TextProps) {
-    return <TextWrapper fontSize="12px" lineHeight="12px" fontWeight="bold" {...props} />
-  },
-  Span(props: TextProps) {
-    return <TextWrapper display="inline" sx={{ overflowWrap: 'break-word' }} {...props} />
+  Caption(props: TextProps & { b?: boolean }) {
+    return (
+      <TextWrapper
+        fontSize="12px"
+        lineHeight="20px"
+        display="inline-block"
+        fontWeight={props.b ? 'bold' : 'normal'}
+        {...props}
+      />
+    )
   },
 }
 

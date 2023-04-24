@@ -1,50 +1,25 @@
-import React, { useRef } from 'react'
-import styled from 'styled-components/macro'
+import React from 'react'
 
+import Container from 'components/Layouts/Container'
 import Navbar from 'components/Layouts/Navbar'
 
+import Community from './Community'
 import FAQ from './FAQ'
+import Hero from './Hero'
+import How from './How'
+import Why from './Why'
 
 const Home = () => {
-  const homeRef = useRef<HTMLDivElement>(null)
-  const aboutRef = useRef<HTMLDivElement>(null)
-  const whyRef = useRef<HTMLDivElement>(null)
-  const faqRef = useRef<HTMLDivElement>(null)
-  const contactRef = useRef<HTMLDivElement>(null)
-  const navHeader = [
-    {
-      headerTitle: 'Home',
-      headerRef: homeRef,
-      headerID: 'home',
-    },
-    {
-      headerTitle: 'About',
-      headerRef: aboutRef,
-      headerID: 'about',
-    },
-    {
-      headerTitle: 'Why Us',
-      headerRef: whyRef,
-      headerID: 'why',
-    },
-    {
-      headerTitle: 'FAQ',
-      headerRef: faqRef,
-      headerID: 'faq',
-    },
-    {
-      headerTitle: 'Contact',
-      headerRef: contactRef,
-      headerID: 'contact',
-    },
-  ]
-
   return (
     <div>
-      <Navbar navHeader={navHeader} />
-      <div ref={faqRef} id="faq">
-        <FAQ />
-      </div>
+      <Navbar />
+      <Hero />
+      <Container>
+        <Why />
+        <How />
+      </Container>
+      <FAQ />
+      <Community />
     </div>
   )
 }
