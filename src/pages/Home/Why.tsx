@@ -35,7 +35,7 @@ const Why = () => {
             </Type.Large>
             {NORMAL_STATE_DATA.map((item, index) => (
               <Flex
-                height="80px"
+                height={['auto', 'auto', '80px']}
                 key={index}
                 alignItems="center"
                 sx={{ gap: 8, borderTop: 'small', borderColor: 'neutral4' }}
@@ -48,7 +48,7 @@ const Why = () => {
             ))}
           </Box>
           <Box flex="1">
-            <Type.Large b py={32} pl={32}>
+            <Type.Large b py={32} pl={[20, 20, 32]}>
               Stake with{' '}
               <Box display="inline-block" bg="primary1" px="4px" py="2px" color="neutral1">
                 RONFI
@@ -57,11 +57,11 @@ const Why = () => {
             <Box bg="neutral3" pr={20} pb={12}>
               {RONFI_STATE_DATA.map((item, index) => (
                 <Flex
-                  height="80px"
+                  height={['auto', 'auto', '80px']}
                   key={index}
                   alignItems="center"
                   sx={{ gap: 8, borderTop: 'small', borderColor: 'neutral4' }}
-                  pl={32}
+                  pl={[20, 20, 32]}
                   py={20}
                 >
                   <Dot bg={'primary1'} flex="0 0 8px"></Dot>
