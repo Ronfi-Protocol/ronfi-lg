@@ -18,7 +18,7 @@ export const SocialButton = ({ text, link, ...props }: { text: string; link: str
 
 const SocialButtons = () => (
   <Flex sx={{ gap: 48 }}>
-    {/* <SocialButton text="Telegram" link="aa" /> */}
+    <SocialButton text="Telegram" link="https://t.me/ronfi_io" />
     <SocialButton text="Twitter" link="https://twitter.com/ronfi_io" />
   </Flex>
 )
