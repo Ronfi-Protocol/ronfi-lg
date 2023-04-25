@@ -6,17 +6,15 @@ import { Box, Flex, Type } from 'theme/base'
 
 const NORMAL_STATE_DATA = [
   'Lock your asset to the validator',
-  'Re-stake by yourself',
-  'Evaluate the validator’s performance by yourself',
-  'Need to wait 3 + 3 days to stake and unstake',
-  'Paid commission for validator',
+  'Manual re-staking, day by day',
+  "Evaluate the validator's performance by yourself",
+  'Need to wait 3 days to withdraw your assets since your last delegation',
 ]
 const RONFI_STATE_DATA = [
-  'Still use your access to other DeFi protocols',
-  'Automated re-stake to receive compound interest',
-  'We recommend the best validator for you',
-  'Swap stRON to Ron as soon as you need it',
-  'Paid an extra 5% rewards fee',
+  'Still use your access to other DeFi protocols or dApps without losing any staking rewards',
+  'Automated re-staking to receive compound interest',
+  'Split to multiple validators to maximize rewards and reduce risk',
+  'Swap stRON to RON immediately on DEX',
 ]
 
 const Dot = styled(Box)`
@@ -37,14 +35,14 @@ const Why = () => {
             </Type.Large>
             {NORMAL_STATE_DATA.map((item, index) => (
               <Flex
-                height={['auto', 'auto', '80px', '80px', 'auto']}
+                height="80px"
                 key={index}
                 alignItems="center"
                 sx={{ gap: 8, borderTop: 'small', borderColor: 'neutral4' }}
                 pr={20}
                 py={20}
               >
-                <Dot bg="neutral5"></Dot>
+                <Dot bg="neutral5" flex="0 0 8px"></Dot>
                 <Type.Normal fontWeight="normal">{item}</Type.Normal>
               </Flex>
             ))}
@@ -59,14 +57,14 @@ const Why = () => {
             <Box bg="neutral3" pr={20} pb={12}>
               {RONFI_STATE_DATA.map((item, index) => (
                 <Flex
-                  height={['auto', 'auto', '80px', '80px', 'auto']}
+                  height="80px"
                   key={index}
                   alignItems="center"
                   sx={{ gap: 8, borderTop: 'small', borderColor: 'neutral4' }}
                   pl={32}
                   py={20}
                 >
-                  <Dot bg={index === RONFI_STATE_DATA.length - 1 ? 'neutral5' : 'primary1'}></Dot>
+                  <Dot bg={'primary1'} flex="0 0 8px"></Dot>
                   <Type.Normal fontWeight="normal">{item}</Type.Normal>
                 </Flex>
               ))}
