@@ -50,7 +50,7 @@ const FAQ = () => {
                   <li>Use of DAO for governance decisions & to manage risk factors.</li>
                 </ul>
                 <br />
-                But there are still potential risks that you need to be aware of. Please see more on our Whitepaper
+                But there are still potential risks that you need to be aware of. Please see more on our document
               </div>
             }
           />

@@ -112,7 +112,9 @@ const Navbar = ({ navHeader }: { navHeader?: NavHeader }) => {
               <Image src="/images/ronfi-logo.png" sx={{ height: [32, 50] }} />
             </Link>
             <Box>
-              <NavItem mr={16}>Document</NavItem>
+              <a href="https://docs.ronfi.io/" target="_blank" rel="noreferrer">
+                <NavItem mr={16}>Document</NavItem>
+              </a>
               {/* <NavItem>Help</NavItem> */}
             </Box>
           </Flex>
