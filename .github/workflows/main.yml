@@ -23,7 +23,7 @@ jobs:
       - name: Deploy
         run: |
           export IMAGE_NAME=${{ secrets.IMAGE_BASE }}.${{ github.sha }}
-          echo "${{ secrets.GOOGLE_KEY }}" > ./gcloud-api-key.json
+          echo ${{ secrets.GOOGLE_KEY }} | base64 --decode > ./gcloud-api-key.json
           gcloud auth activate-service-account --project=${{ secrets.GOOGLE_PROJECT }} --key-file gcloud-api-key.json
           gcloud auth configure-docker
           docker build -t $IMAGE_NAME .
