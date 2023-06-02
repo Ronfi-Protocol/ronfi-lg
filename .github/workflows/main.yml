@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches: ["implement_cicd"]
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
+    steps:
+      - uses: actions/checkout@master
+      - name: Deploy
+        run: |
+          export IMAGE_NAME=${{ secrets.IMAGE_BASE }}.${{ github.sha }}
+          echo ${{ secrets.GOOGLE_KEY }} | base64 --decode > ./gcloud-api-key.json
+          gcloud auth activate-service-account --project=${{ secrets.GOOGLE_PROJECT }} --key-file gcloud-api-key.json
+          gcloud auth configure-docker
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME
+          curl --location --request POST ${{ secrets.WEBHOOK }}?tag=v0.0.1.${{ github.sha }}
