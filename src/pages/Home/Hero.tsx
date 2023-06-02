@@ -8,7 +8,7 @@ import { Box, Flex, Type } from 'theme/base'
 import { MEDIA_WIDTHS } from 'theme/theme'
 
 const HeroContent = styled(Box)`
-  background: url(/images/ronfi-hero.png) no-repeat;
+  background: url(/images/ronfi-hero.webp) no-repeat;
   background-size: auto 100%;
   background-position: top right;
   @media screen and (max-width: ${MEDIA_WIDTHS.upToMedium}px) {
